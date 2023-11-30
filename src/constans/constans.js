@@ -24,3 +24,5 @@ export const makes = [
   ];
 
 export const BASE_URL = "https://64ef982c219b3e2873c4ae04.mockapi.io/"
+
+export const DEFOLT_IMAGE ='https://img.freepik.com/premium-vector/car-vector-bmw_73313-10.jpg?w=740'
