@@ -1,6 +1,6 @@
 import React from 'react'
 import css from './CarItem.module.css'
-import { DEFOLT_IMAGE } from 'constans/constans';
+import { DEFOLT_IMAGE, imgExists } from 'constans/constans';
 
 const CarItem = ({car, alt, openModal}) => {
   const {
@@ -15,13 +15,16 @@ const CarItem = ({car, alt, openModal}) => {
     functionalities, 
     rentalPrice  } = car;
 
-  const url =  img ? img : DEFOLT_IMAGE;
+
+const url =  imgExists(img) ? img : DEFOLT_IMAGE;
 const addresArray = address.split(',');
 const city = addresArray[1];
 const country = addresArray[2];
-  return (
+  
+return (
     <li>
-       <img className={css.GalleryItem_image} src={url} width={200} alt={alt} />
+     
+       <img className={css.item_image} src={url} width={200} alt={alt} />
        <div>
         <h2>{make} {model}, {year}</h2>
        <p>{rentalPrice}</p>
@@ -38,7 +41,7 @@ const country = addresArray[2];
         <li>{id}</li>
         <li>{functionalities[0]}</li>
        </ul>
-       <button onClick={openModal}>Learn more</button>
+       <button type="button" onClick={() => openModal(car)}>Learn more</button>
     </li>
   )
 }

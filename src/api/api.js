@@ -5,12 +5,6 @@ import { BASE_URL } from 'constans/constans';
 
 export async function getTrendingCar() {
     const url = `${BASE_URL}/adverts`
-    // const options = {
-    //     params: {
-    //         api_key: KEY,
-    //     page: page},
-      
-    // };
     try {
         const response = await axios(url);
         const dataRespons = await response.data;

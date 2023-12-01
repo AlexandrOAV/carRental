@@ -19,12 +19,12 @@ const Home = () => {
           toast.error('Car not faund')
           return;
         }
-        
+        console.log(newData)
       } catch (error) {
         toast.error(`API NOT FAUND: ${error.message}`)
       } 
       }
-      
+      addData()
       return (
      <div>
       

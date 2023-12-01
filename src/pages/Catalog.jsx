@@ -1,23 +1,49 @@
 
-import { Modal } from 'components/Modal/Modal';
-import React, { useState } from 'react';
+import { getTrendingCar } from 'api/api';
+import CarList from 'components/CarList/CarList';
+import HomeMenu from 'components/HomeMenu/HomeMenu';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const Catalog = ()=> {
-  const [showModal, setShowModal] = useState(false);
-  const closeModal = () => setShowModal(false);
-  const openModal = () => {
-     setShowModal(true);
-   };
+  const [isLoading, setIsLoading] = useState(false);
+  const [results, setResults] = useState([]);
+
+
+  useEffect(() => {
+    addData()
+  }, [])
+ 
+
+
+  async function addData() {
+    try {
+      setIsLoading(true);
+      const newData = await getTrendingCar();
+    
+        if (newData.lenth === 0) {
+        toast.error('Car not faund')
+        return;
+      }
+      setResults(newData)
+      console.log(newData)
+      
+    } catch (error) {
+      toast.error(`API NOT FAUND: ${error.message}`)
+    } finally {setIsLoading(false);}
+    }
+  
+    console.log('results', results)
   return (
-    <div>
+    <>
+      <HomeMenu/>
       Catalog
-      <button onClick={openModal}>Відкрити модальне вікно</button>
-        {showModal &&
-        <Modal onClose={closeModal}>
-         Modal window
-        </Modal>}
-    </div>
+      <CarList
+      isLoading={isLoading}
+      results={results}
+      />
+    </>
   )
-}
+  }
 
 export default Catalog

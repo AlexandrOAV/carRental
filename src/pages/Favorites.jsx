@@ -1,8 +1,12 @@
+import HomeMenu from 'components/HomeMenu/HomeMenu'
 import React from 'react'
 
 const Favorites=()=> {
   return (
-    <div>Favorites</div>
+    <div>
+      <HomeMenu/>
+      Favorites
+    </div>
   )
 }
 
