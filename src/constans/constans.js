@@ -23,6 +23,17 @@ export const makes = [
     "Land"
   ];
 
+export const arrayNumber =()=>{
+const startNumber = 10;
+const endNumber = 1500;
+const step = 10;
+const numberArray = [];
+for (let i = startNumber; i <= endNumber; i += step) {
+  numberArray.push(i);
+}
+return numberArray;
+
+}
 
 export const imgExists = (url) => {
   const image = new Image();
@@ -32,4 +43,4 @@ export const imgExists = (url) => {
   
 export const BASE_URL = "https://64ef982c219b3e2873c4ae04.mockapi.io/"
 
-export const DEFOLT_IMAGE ='https://img.freepik.com/premium-vector/car-vector-bmw_73313-10.jpg?w=740'
+export const DEFOLT_IMAGE ='https://i.pinimg.com/564x/0c/6b/91/0c6b91d4b3f3f607a8a30b49e567fd90.jpg'

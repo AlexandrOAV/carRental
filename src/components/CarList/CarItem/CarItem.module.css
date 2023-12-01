@@ -1,10 +1,117 @@
+.card_container {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    width: calc((100% - 2*29px) / 5);
+    min-width: 274px;
+    min-height: 426px; 
+   
+   }
+  
+  .item_image_block {
+    margin-bottom: 14px;
+    height: 268px;
+    position: relative;
+    overflow:hidden;
+    border-radius: 14px;
+  }
+  
+  .item_image {
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .heart_icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    cursor:pointer;
+    stroke: var(--white);
+  }
+  .heart_icon:hover{
+    fill:var(--hover-blue);
+    stroke:var(--hover-blue);
+  }
+.car_item {
+    position: relative;
+max-width: 274px;
+}
+
+
 .text_type {
-    text-transform: capitalize;
+    text-transform: lowercase;
+    
+}
+.text_type::first-letter {
+    text-transform: uppercase;
+    
 }
 
 .item_image {
-    min-height: calc (100%-50px);
     width: 100%;
     object-fit: cover;
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.heart_icon {
+    width: 18px;
+    height: 18px;
+}
+.item_name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+color: var(--color-text-black);
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px;
+}
+.item_model{
+    color:var(--blue-color)
+}
+
+.item_head {
+font-size: 16px;
+line-height: 1.5; 
+}
+
+.car_info_list {
+    
+    padding: 0;
+    display: flex;
+    gap: 6px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+    color:var(--grey);
+    font-size: 11px;
+    font-weight: 400;
+line-height: 1.5;
+}
+.car_info_list li:last-child{
+    margin-right: 0;
+    border: none;
+}
+.car_info_item{
+padding:0 6px 0 0;
+border-right:1px solid var(--grey-border);
+}
+
+
+.button_cart{
+margin-top: 28px;
+background-color: var(--blue-color);
+display: flex;
+width: 100%;
+height: 44px;
+padding: 12px 0;
+justify-content: center;
+align-items: center;
+border-radius: 12px;
+border: none;
+font-size: 14px;
+font-weight: 600;
+line-height: 1.43;
+color:var(--white)
 }

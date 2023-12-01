@@ -1,6 +1,7 @@
 
 import { getTrendingCar } from 'api/api';
 import CarList from 'components/CarList/CarList';
+import FormSearch from 'components/FormSearch/FormSearch';
 import HomeMenu from 'components/HomeMenu/HomeMenu';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -26,18 +27,18 @@ const Catalog = ()=> {
         return;
       }
       setResults(newData)
-      console.log(newData)
+      // console.log(newData)
       
     } catch (error) {
       toast.error(`API NOT FAUND: ${error.message}`)
     } finally {setIsLoading(false);}
     }
   
-    console.log('results', results)
+  
   return (
     <>
       <HomeMenu/>
-      Catalog
+    <FormSearch/>
       <CarList
       isLoading={isLoading}
       results={results}

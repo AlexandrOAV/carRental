@@ -1,0 +1,13 @@
+.container {
+    max-width: 1220px;
+    padding: 0 10px;
+    margin: 0 auto;
+    margin-top: 50px;
+
+}
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    gap:29px;
+    
+}

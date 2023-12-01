@@ -4,25 +4,32 @@ import { nanoid } from 'nanoid';
 import React, { useState } from 'react'
 import CarItem from './CarItem/CarItem';
 import { Loader } from 'components/Loader/Loader';
+import { DEFOLT_IMAGE, imgExists } from 'constans/constans';
+import css from './CarList.module.css'
 
 
 const  CarList = ({results, isLoading})=> {
   const [showModal, setShowModal] = useState(false);
  const [selectedCar, setSelectedCar] = useState(null); 
+ const [url, setUrl] = useState(DEFOLT_IMAGE);
 
   const closeModal = () => setShowModal(false);
   const openModal = (car) => {
+    setUrl( imgExists(car.img) ? car.img : DEFOLT_IMAGE);
     setSelectedCar(car);
     setShowModal(true);
+   
+    
     };
   
 
    const showPoster = Array.isArray(results) && results.length > 0;
-   console.log("selectedCar", selectedCar);
+
+ 
    return (
-    <section>
+    <section className={css.container}>
        {isLoading && <Loader />}
-     <ul>
+     <ul className={css.list}>
       {showPoster&&results.map(car => 
       <CarItem 
       key={nanoid(8)} 
@@ -32,7 +39,7 @@ const  CarList = ({results, isLoading})=> {
      </ul>  
         {showModal && selectedCar &&
        <Modal onClose={closeModal} >
-        <img src={selectedCar.img} alt={selectedCar.make} />
+        <img src={url} alt={selectedCar.make} />
        <p>Modal car {selectedCar.id}</p> 
        </Modal>
        }
