@@ -2,6 +2,7 @@ import { arrayNumber, makes } from 'constans/constans';
 import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
 import css from './FormSearch.module.css'
+import { formatNumber } from 'constans/constans';
 
 const FormSearch = () => {
   const [carBrand, setCarBrand] = useState('');
@@ -11,7 +12,6 @@ const FormSearch = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    // Додайте код для виконання пошуку тут, наприклад, виклик функції для відправлення запиту на сервер
     console.log('Searching...', { carBrand, price, fromMileage, toMileage });
   };
 
@@ -55,15 +55,15 @@ const FormSearch = () => {
         id="fromMileage"
         name="fromMileage"
         value={fromMileage}
-        onChange={(e) => setFromMileage(e.target.value.replace(/\D/, ''))}
+        onChange={(e) => setFromMileage(formatNumber(e.target.value.replace(/\D/, '')))}
         placeholder="From"
       />
         <input
-        type="number"
+        type="text"
         id="toMileage"
         name="toMileage"
         value={toMileage}
-        onChange={(e) => setToMileage(e.target.value)}
+        onChange={(e) => setToMileage(formatNumber(e.target.value.replace(/\D/, '')))}
         placeholder="To"
       />
         </div> 
