@@ -60,7 +60,7 @@ const [isAddFavorite, setIsAddFavorite] =useState(false);
       }
     }     
 
-    const filteredCars = results.filter((car) => car.make === brandFilter || numberFromText(car.rentalPrice) <= Number(priceNumber));
+    const filteredCars = results.filter((car) => car.make === brandFilter && numberFromText(car.rentalPrice) <= Number(priceNumber));
    
    
     const renderArray = filteredCars.length === 0?results:filteredCars;
