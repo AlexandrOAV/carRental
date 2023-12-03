@@ -38,21 +38,7 @@
       fill:none;
     }
 
-  /* .heart_icon_activ {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    top: 14px;
-    right: 14px;
-    cursor:pointer;
-    stroke:none;
-    fill: blue;
-    transition: fill var(--time-transition);
-  } */
-  /* .heart_icon:hover{
-    fill:var(--hover-blue);
-    stroke:var(--hover-blue);
-  } */
+  
 
 .car_item {
     position: relative;

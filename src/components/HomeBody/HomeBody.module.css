@@ -1,0 +1,46 @@
+.container {
+    max-width: 1220px;
+    padding: 0 10px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+   }
+   
+   .head{
+    color: var(--color-text-black);
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px;
+   }
+
+   .head_slogan{
+    color: var(--color-text-black);
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px;
+   }
+   .button{
+    margin-top: 28px;
+    background-color: var(--blue-color);
+    display: flex;
+    
+    height: 44px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: none;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.43;
+    color:var(--white);
+    transition: background-color var(--time-transition);
+    }
+    .button:is(:hover, :focus){
+      background-color: var(--hover-blue);  
+    }
