@@ -11,9 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-          <BrowserRouter >
-      {/* basename="/carRental" */}
-       <App />
+          <BrowserRouter   basename="/carRental" >
+            <App />
        </BrowserRouter>
     </Provider>
     <ToastContainer  position="top-center"/>
