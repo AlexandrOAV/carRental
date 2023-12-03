@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/carRental/static/css/main.69b8b2cd.css",
-    "main.js": "/carRental/static/js/main.b164273e.js",
-    "static/css/329.4fd1b043.chunk.css": "/carRental/static/css/329.4fd1b043.chunk.css",
-    "static/js/329.1f43e4fd.chunk.js": "/carRental/static/js/329.1f43e4fd.chunk.js",
+    "main.js": "/carRental/static/js/main.993556c2.js",
+    "static/css/329.ee4e9067.chunk.css": "/carRental/static/css/329.ee4e9067.chunk.css",
+    "static/js/329.5cd1ce48.chunk.js": "/carRental/static/js/329.5cd1ce48.chunk.js",
     "static/css/606.ab68da28.chunk.css": "/carRental/static/css/606.ab68da28.chunk.css",
     "static/js/606.e7a473fb.chunk.js": "/carRental/static/js/606.e7a473fb.chunk.js",
     "static/css/979.69624f4a.chunk.css": "/carRental/static/css/979.69624f4a.chunk.css",
@@ -14,9 +14,9 @@
     "static/media/heart.svg": "/carRental/static/media/heart.b9fe6730baabede7cb89087918cbb873.svg",
     "static/media/close-button.svg": "/carRental/static/media/close-button.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
     "main.69b8b2cd.css.map": "/carRental/static/css/main.69b8b2cd.css.map",
-    "main.b164273e.js.map": "/carRental/static/js/main.b164273e.js.map",
-    "329.4fd1b043.chunk.css.map": "/carRental/static/css/329.4fd1b043.chunk.css.map",
-    "329.1f43e4fd.chunk.js.map": "/carRental/static/js/329.1f43e4fd.chunk.js.map",
+    "main.993556c2.js.map": "/carRental/static/js/main.993556c2.js.map",
+    "329.ee4e9067.chunk.css.map": "/carRental/static/css/329.ee4e9067.chunk.css.map",
+    "329.5cd1ce48.chunk.js.map": "/carRental/static/js/329.5cd1ce48.chunk.js.map",
     "606.ab68da28.chunk.css.map": "/carRental/static/css/606.ab68da28.chunk.css.map",
     "606.e7a473fb.chunk.js.map": "/carRental/static/js/606.e7a473fb.chunk.js.map",
     "979.69624f4a.chunk.css.map": "/carRental/static/css/979.69624f4a.chunk.css.map",
@@ -25,6 +25,6 @@
   },
   "entrypoints": [
     "static/css/main.69b8b2cd.css",
-    "static/js/main.b164273e.js"
+    "static/js/main.993556c2.js"
   ]
 }
