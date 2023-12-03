@@ -1,30 +1,30 @@
 {
   "files": {
     "main.css": "/carRental/static/css/main.69b8b2cd.css",
-    "main.js": "/carRental/static/js/main.bfc573d0.js",
+    "main.js": "/carRental/static/js/main.28e691d5.js",
     "static/css/329.ee4e9067.chunk.css": "/carRental/static/css/329.ee4e9067.chunk.css",
     "static/js/329.ef474dd8.chunk.js": "/carRental/static/js/329.ef474dd8.chunk.js",
     "static/css/606.ab68da28.chunk.css": "/carRental/static/css/606.ab68da28.chunk.css",
-    "static/js/606.69cb028a.chunk.js": "/carRental/static/js/606.69cb028a.chunk.js",
+    "static/js/606.0a31c7fd.chunk.js": "/carRental/static/js/606.0a31c7fd.chunk.js",
     "static/css/979.69624f4a.chunk.css": "/carRental/static/css/979.69624f4a.chunk.css",
-    "static/js/979.79e91d8b.chunk.js": "/carRental/static/js/979.79e91d8b.chunk.js",
+    "static/js/979.66337481.chunk.js": "/carRental/static/js/979.66337481.chunk.js",
     "static/js/924.ff7c9afd.chunk.js": "/carRental/static/js/924.ff7c9afd.chunk.js",
     "static/media/carHome.png": "/carRental/static/media/carHome.09e3ad8569d4268c247b.png",
     "index.html": "/carRental/index.html",
     "static/media/heart.svg": "/carRental/static/media/heart.b9fe6730baabede7cb89087918cbb873.svg",
     "static/media/close-button.svg": "/carRental/static/media/close-button.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
     "main.69b8b2cd.css.map": "/carRental/static/css/main.69b8b2cd.css.map",
-    "main.bfc573d0.js.map": "/carRental/static/js/main.bfc573d0.js.map",
+    "main.28e691d5.js.map": "/carRental/static/js/main.28e691d5.js.map",
     "329.ee4e9067.chunk.css.map": "/carRental/static/css/329.ee4e9067.chunk.css.map",
     "329.ef474dd8.chunk.js.map": "/carRental/static/js/329.ef474dd8.chunk.js.map",
     "606.ab68da28.chunk.css.map": "/carRental/static/css/606.ab68da28.chunk.css.map",
-    "606.69cb028a.chunk.js.map": "/carRental/static/js/606.69cb028a.chunk.js.map",
+    "606.0a31c7fd.chunk.js.map": "/carRental/static/js/606.0a31c7fd.chunk.js.map",
     "979.69624f4a.chunk.css.map": "/carRental/static/css/979.69624f4a.chunk.css.map",
-    "979.79e91d8b.chunk.js.map": "/carRental/static/js/979.79e91d8b.chunk.js.map",
+    "979.66337481.chunk.js.map": "/carRental/static/js/979.66337481.chunk.js.map",
     "924.ff7c9afd.chunk.js.map": "/carRental/static/js/924.ff7c9afd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.69b8b2cd.css",
-    "static/js/main.bfc573d0.js"
+    "static/js/main.28e691d5.js"
   ]
 }
