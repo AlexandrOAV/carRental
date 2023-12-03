@@ -1,6 +1,7 @@
 import React from 'react'
 import css from './DatailCar.module.css'
 import { addCity, arrayCheck, formatNumber } from 'constans/constans';
+import { nanoid } from 'nanoid';
 
 const DatailCar = ({car, url}) => {
     const {
@@ -52,12 +53,12 @@ const DatailCar = ({car, url}) => {
     <h3 className={css.text_title}>Accessories and functionalities:</h3>
 <ul className={css.car_info_list}>
     {showPosterFunctionalities&&functionalities.map(element=>{
-        return <li className={css.car_info_item}>{element}</li>
+        return <li key={nanoid(8)} className={css.car_info_item}>{element}</li>
         })}
 </ul>
 <ul className={css.car_info_list}>
     {showPosterAccessories&&accessories.map(element=>{
-        return <li className={css.car_info_item}>{element}</li>
+        return <li key={nanoid(8)} className={css.car_info_item}>{element}</li>
         })}
 </ul>
 

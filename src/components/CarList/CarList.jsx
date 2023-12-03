@@ -28,7 +28,7 @@ const [isAddFavorite, setIsAddFavorite] =useState(false);
  const dispatch = useDispatch();
 
  const priceNumber = numberFromText(priceFilter);
- console.log("🚀 ~ file: CarList.jsx:31 ~ CarList ~ priceNumber:", priceNumber)
+ 
 
  useEffect(() => {
   const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -61,7 +61,7 @@ const [isAddFavorite, setIsAddFavorite] =useState(false);
     }     
 
     const filteredCars = results.filter((car) => car.make === brandFilter || numberFromText(car.rentalPrice) <= Number(priceNumber));
-    console.log("🚀 ~ file: CarList.jsx:64 ~ CarList ~ filteredCars:", filteredCars.length)
+   
    
     const renderArray = filteredCars.length === 0?results:filteredCars;
 
