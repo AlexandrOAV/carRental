@@ -1,9 +1,11 @@
-import React from 'react'
+
 import css from './CarItem.module.css'
 import { ReactComponent as Heart } from '../../../images/heart.svg';
-import { DEFOLT_IMAGE, imgExists } from 'constans/constans';
+import { DEFOLT_IMAGE, addCity, imgExists } from 'constans/constans';
 
-const CarItem = ({car, alt, openModal}) => {
+
+const CarItem = ({car, alt, openModal, handleAddToFavorites}) => {
+  
   const {
     id,
     year, 
@@ -16,18 +18,19 @@ const CarItem = ({car, alt, openModal}) => {
     accessories, 
     rentalPrice  } = car;
 
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+     const isFavorite = storedFavorites.some((favorite) => favorite.id === car.id);
+     const heartIconClass = isFavorite ? css.fill_blue : css.fill_normal;
 
 const url =  imgExists(img) ? img : DEFOLT_IMAGE;
-const addresArray = address.split(',');
-const city = addresArray[1];
-const country = addresArray[2];
 const randomInteger = Math.floor(Math.random() * 3);
 
 return (
     <li className={`${css.car_item} ${css.card_container}`}>
    
       <div className={css.item_image_block}>
-      <Heart onClick={() => openModal(car)} className={css.heart_icon} />
+      <Heart onClick={()=>handleAddToFavorites(car)} 
+      className={`${css.heart_icon} ${heartIconClass}`} />
       <img className={css.item_image} src={url} width={200} alt={alt} />
       </div>
       
@@ -36,8 +39,8 @@ return (
        <p>{rentalPrice}</p>
        </div>
        <ul className={css.car_info_list}>
-        <li className={css.car_info_item}>{city}</li>
-        <li className={css.car_info_item}>{country}</li>
+        <li className={css.car_info_item}>{addCity(address).city}</li>
+        <li className={css.car_info_item}>{addCity(address).country}</li>
         <li className={css.car_info_item}>{rentalCompany}</li>
         {(rentalCompany==="Luxury Car Rentals"||rentalCompany==="Premium Auto Rentals" )&& <li>Premium</li>}
        </ul>

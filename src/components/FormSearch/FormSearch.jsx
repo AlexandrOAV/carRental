@@ -3,17 +3,29 @@ import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
 import css from './FormSearch.module.css'
 import { formatNumber } from 'constans/constans';
+import { useDispatch } from 'react-redux';
 
 const FormSearch = () => {
   const [carBrand, setCarBrand] = useState('');
   const [price, setPrice] = useState('');
   const [fromMileage, setFromMileage] = useState('');
   const [toMileage, setToMileage] = useState('');
+  const dispatch = useDispatch();
+
+
+ 
+
+
+
 
   const handleSearch = (event) => {
-    event.preventDefault();
-    console.log('Searching...', { carBrand, price, fromMileage, toMileage });
-  };
+    event.preventDefault();  
+    setCarBrand(carBrand);
+    setPrice(price);   
+  dispatch({ type: 'catalog/setBrandFilter', payload: carBrand });
+  dispatch({ type: 'catalog/setPriceFilter', payload: price });
+
+    };
 
   return (
     <section className={css.container}>

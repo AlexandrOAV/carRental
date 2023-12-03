@@ -3,35 +3,36 @@ import { getTrendingCar } from 'api/api';
 import CarList from 'components/CarList/CarList';
 import FormSearch from 'components/FormSearch/FormSearch';
 import HomeMenu from 'components/HomeMenu/HomeMenu';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 const Catalog = ()=> {
-  const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState([]);
 
+const dispatch = useDispatch();
 
   useEffect(() => {
     addData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
  
 
 
   async function addData() {
     try {
-      setIsLoading(true);
+      dispatch({type:"catalog/setIsLoading", payload:true})
+   
       const newData = await getTrendingCar();
-    
-        if (newData.lenth === 0) {
+      dispatch({type:"catalog/setResults", payload:newData})
+        if (newData.length === 0) {
         toast.error('Car not faund')
         return;
       }
-      setResults(newData)
-      // console.log(newData)
-      
+         
     } catch (error) {
       toast.error(`API NOT FAUND: ${error.message}`)
-    } finally {setIsLoading(false);}
+       } 
+    finally {dispatch({type:"catalog/setIsLoading", payload: false})}
     }
   
   
@@ -39,10 +40,7 @@ const Catalog = ()=> {
     <>
       <HomeMenu/>
     <FormSearch/>
-      <CarList
-      isLoading={isLoading}
-      results={results}
-      />
+      <CarList />
     </>
   )
   }

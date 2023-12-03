@@ -1,9 +1,11 @@
 :root{
     --color-text-black:#121417;
+    --color-text-item-modal:#363535;
     --blue-color:#3470FF;
     --grey:rgba(18, 20, 23, 0.50);
     --grey-border:rgba(18, 20, 23, 0.10);
     --white:#FFF;
     --hover-blue:#0B44CD;
-
+    --background-text-rental:#F9F9F9 ;
+    --time-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }

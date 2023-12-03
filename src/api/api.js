@@ -15,3 +15,15 @@ export async function getTrendingCar() {
         throw new Error(error.message);
     }
 }
+
+export async function getOneCar(id) {
+    const url = `${BASE_URL}/adverts/:${id}`
+    try {
+        const response = await axios(url);
+        const dataCar = await response.data;
+        return dataCar;
+    }catch(error){
+        toast.error(`API not faund: ${error.message}`)
+        throw new Error(error.message);
+    }
+}

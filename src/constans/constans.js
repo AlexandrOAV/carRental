@@ -20,7 +20,10 @@ export const makes = [
     "Mercedes-Benz",
     "Chrysler",
     "Kia",
-    "Land"
+    "Land",
+    "Mavik",
+    "Ford",
+    "Sputnik M",
   ];
 
 export const arrayNumber =()=>{
@@ -32,7 +35,6 @@ for (let i = startNumber; i <= endNumber; i += step) {
   numberArray.push(i);
 }
 return numberArray;
-
 }
 
 export const formatNumber = (number) => {
@@ -48,3 +50,20 @@ export const imgExists = (url) => {
 export const BASE_URL = "https://64ef982c219b3e2873c4ae04.mockapi.io/"
 
 export const DEFOLT_IMAGE ='https://i.pinimg.com/564x/0c/6b/91/0c6b91d4b3f3f607a8a30b49e567fd90.jpg'
+
+export const  addCity= address =>{
+  const addresArray = address.split(',');
+  const city = addresArray[1];
+  const country = addresArray[2];
+  return {city, country};
+}
+
+export const arrayCheck =arr =>{
+  const showPoster = Array.isArray(arr) && arr.length > 0;
+  return showPoster;
+}
+
+export const numberFromText =(textNumber)=>{
+  const number = textNumber.replace(/\D/g, '');
+  return number;
+}
