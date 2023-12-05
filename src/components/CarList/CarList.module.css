@@ -19,3 +19,17 @@
     padding: 20px;
 
 }
+.button_more{
+    display: block;
+margin: 100px auto;
+color:var(--blue-color);
+border: none;
+background-color: transparent;
+font-size: 16px;
+font-weight: 500;
+line-height: 1.5;
+transition: background-color var(--time-transition);
+}
+.button_more:is(:hover, :focus){
+    color: var(--hover-blue);  
+  }

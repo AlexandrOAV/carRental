@@ -3,10 +3,18 @@ import { toast } from 'react-toastify';
 import { BASE_URL } from 'constans/constans';
 
 
-export async function getTrendingCar() {
-    const url = `${BASE_URL}/adverts`
+export async function getTrendingCar(page, limit) {
+
+    const url = (`${BASE_URL}/adverts`)  
+    
+   const objParams =  {
+        completed: false,
+        page: page,
+        limit: limit,
+      };
+
     try {
-        const response = await axios(url);
+        const response = await axios(url, {params: objParams,});
         const dataRespons = await response.data;
         return dataRespons;
     }
@@ -16,8 +24,8 @@ export async function getTrendingCar() {
     }
 }
 
-export async function getOneCar(id) {
-    const url = `${BASE_URL}/adverts/:${id}`
+export async function totalCar() {
+    const url = `${BASE_URL}/adverts`
     try {
         const response = await axios(url);
         const dataCar = await response.data;

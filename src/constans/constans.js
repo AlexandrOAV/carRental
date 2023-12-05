@@ -1,3 +1,9 @@
+export const BASE_URL = "https://64ef982c219b3e2873c4ae04.mockapi.io/"
+
+export const DEFOLT_IMAGE ='https://i.pinimg.com/564x/0c/6b/91/0c6b91d4b3f3f607a8a30b49e567fd90.jpg'
+
+export const LIMIT_CAR_PAGE = 12;
+
 export const makes = [
     "Buick",
     "Volvo",
@@ -47,10 +53,6 @@ export const imgExists = (url) => {
   return image.complete || (image.width + image.height) > 0;
 };
   
-export const BASE_URL = "https://64ef982c219b3e2873c4ae04.mockapi.io/"
-
-export const DEFOLT_IMAGE ='https://i.pinimg.com/564x/0c/6b/91/0c6b91d4b3f3f607a8a30b49e567fd90.jpg'
-
 export const  addCity= address =>{
   const addresArray = address.split(',');
   const city = addresArray[1];

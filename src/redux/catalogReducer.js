@@ -1,11 +1,12 @@
 
 const initialState={
     results: [],
+    totalResult:[],
     favorites:[],
     isLoading:false,
     brandFilter:'',
     priceFilter:'',
-    filter:[],
+       
  }
 
 export const catalogReducer=(state=initialState, action)=>{
@@ -15,6 +16,9 @@ export const catalogReducer=(state=initialState, action)=>{
         }
         case "catalog/setResults":{
             return {...state, results:action.payload}
+        }
+        case "catalog/setTotalResult":{
+            return {...state, totalResult:action.payload}
         }
         case "favorites/setFavorites":{
             return {...state, favorites:action.payload}
