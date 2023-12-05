@@ -24,7 +24,8 @@ const FormSearch = () => {
     setPrice(price);   
   dispatch({ type: 'catalog/setBrandFilter', payload: carBrand });
   dispatch({ type: 'catalog/setPriceFilter', payload: price });
-
+  setCarBrand('');
+  setPrice('');  
     };
 
   return (
