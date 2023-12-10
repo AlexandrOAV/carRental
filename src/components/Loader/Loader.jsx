@@ -4,8 +4,8 @@ export const Loader = () => {
     return (
     <Blocks
   visible={true}
-  height="100"
-  width="100"
+  height="50 "
+  width="50"
   ariaLabel="blocks-loading"
   wrapperStyle={{}}
   wrapperClass="blocks-wrapper"

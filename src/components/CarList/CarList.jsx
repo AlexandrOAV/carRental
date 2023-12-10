@@ -1,15 +1,28 @@
 
-import { Modal } from 'components/Modal/Modal';
-import { nanoid } from 'nanoid';
 import React, { useEffect, useState } from 'react'
+import {  useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { toast } from 'react-toastify';
+import css from './CarList.module.css'
+import { DEFOLT_IMAGE, LIMIT_CAR_PAGE, arrayCheck, imgExists, numberFromText } from 'constans/constans';
 import CarItem from './CarItem/CarItem';
 import { Loader } from 'components/Loader/Loader';
-import { DEFOLT_IMAGE, LIMIT_CAR_PAGE, arrayCheck, imgExists, numberFromText } from 'constans/constans';
-import css from './CarList.module.css'
-import {  useDispatch, useSelector } from 'react-redux';
+import { Modal } from 'components/Modal/Modal';
 import DatailCar from 'components/DatailCar/DatailCar';
 import { getTrendingCar, totalCar } from 'api/api';
-import { toast } from 'react-toastify';
+
+import { selectBrandFilter, selectFavorites, 
+  selectIsLoading, 
+  selectPriceFilter, 
+  selectResults, 
+  selectTotalResults, 
+  setBrandFilter, 
+  setFavorites, 
+  setIsLoading, 
+  setPriceFilter, 
+  setResults, 
+  setTotalResult
+ } from 'redux/catalogReducer';
 
 
 const  CarList = ()=> {
@@ -21,15 +34,14 @@ const [page, setPage] = useState(1);
 const [carTotal, setCarTotal] = useState(null);
 const [intermediateResult, setIntermediateResult] = useState([]);
  
- const favorites = useSelector((state)=>state.results.favorites)
- const results = useSelector((state)=>state.results.results)
- const totalResult = useSelector((state)=>state.results.totalResult)
- const isLoading = useSelector((state)=>state.results.isLoading)
- const brandFilter = useSelector((state)=>state.results.brandFilter)
- const priceFilter = useSelector((state)=>state.results.priceFilter)
+ const favorites = useSelector(selectFavorites)
+ const results = useSelector(selectResults)
+ const totalResult = useSelector(selectTotalResults)
+ const isLoading = useSelector(selectIsLoading)
+ const brandFilter = useSelector(selectBrandFilter)
+ const priceFilter = useSelector(selectPriceFilter)
+
  const dispatch = useDispatch();
-
-
 
  const priceNumber = numberFromText(priceFilter);
  const showButton = results.length > 0 && results.length < carTotal;
@@ -38,25 +50,27 @@ const [intermediateResult, setIntermediateResult] = useState([]);
  useEffect(() => {
   addData();
 // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [page])
+}, [page]);
 
 async function addData() {
   try {
-dispatch({type:"catalog/setIsLoading", payload:true})
-dispatch({type:'catalog/setBrandFilter', payload:''} )
-dispatch({type:'catalog/setPriceFilter', payload:''} )
+dispatch(setIsLoading(true));
+dispatch(setBrandFilter(''));
+dispatch(setPriceFilter(''));
+
     const limit = LIMIT_CAR_PAGE;
     
     const newData = await getTrendingCar(page, limit);
 
     const newDataTotal = await totalCar();
-    dispatch({type:'catalog/setTotalResult', payload:newDataTotal} )
+    dispatch(setTotalResult(newDataTotal));
+
       if(page===1){
-        dispatch({type:'catalog/setResults', payload:newData})
-        setIntermediateResult(newData)
+        dispatch(setResults(newData));
+        setIntermediateResult(newData);
       } else {
         const updatedResults = [...intermediateResult, ...newData];
-        dispatch({ type: "catalog/setResults", payload: updatedResults });
+        dispatch(setResults(updatedResults));
         setIntermediateResult(updatedResults);
       }
 
@@ -71,17 +85,12 @@ dispatch({type:'catalog/setPriceFilter', payload:''} )
   } catch (error) {
     toast.error(`API NOT FAUND: ${error.message}`)
      } 
-  finally {dispatch({type:"catalog/setIsLoading", payload: false});
-
-    }
-  
+  finally {dispatch(setIsLoading(false));}
   }
-
-
 
  useEffect(() => {
   const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  dispatch({ type: 'favorites/setFavorites', payload: storedFavorites });
+  dispatch(setFavorites(storedFavorites));
 }, [dispatch]);
 
   const closeModal = () => setShowModal(false);
@@ -91,7 +100,7 @@ dispatch({type:'catalog/setPriceFilter', payload:''} )
     setShowModal(true);
     };
   
-    const addNextPage =()=>{setPage(prevState => prevState + 1)}
+  const addNextPage =()=>{setPage(prevState => prevState + 1)}
 
     const handleAddToFavorites = (car) => {
       const isFavorite = favorites.some((favorite) => favorite.id === car.id);
@@ -99,35 +108,14 @@ dispatch({type:'catalog/setPriceFilter', payload:''} )
       if (isFavorite) {
         
         const newFavorites = favorites.filter((favorite) => favorite.id !== car.id);
-        dispatch({ type: 'favorites/setFavorites', payload: newFavorites });
+        dispatch(setFavorites(newFavorites));
         localStorage.setItem('favorites', JSON.stringify(newFavorites));
       } else {
         const newFavorites = [...favorites, car];
-        dispatch({ type: 'favorites/setFavorites', payload: newFavorites });
+        dispatch(setFavorites(newFavorites));
         localStorage.setItem('favorites', JSON.stringify(newFavorites));
       }
     }     
-
-    // const filterByName=(cars, targetMake)=> {
-    //   const filteredCars=cars.filter(car => car.name === targetMake);
-    //   return filteredCars;
-    // }
-    // const filterByPrice=(cars, targetPrice)=> {
-    //   const filteredCars=cars.filter(car => car.price === targetPrice);
-    //   return filteredCars;
-    // }
-    // const filterByNameAndPrice = (cars, targetMake, targetPrice)=> {
-    //   const filteredCars = cars.filter(car => car.name === targetMake && car.price === targetPrice);
-    //   return filteredCars;
-    // }
-
-// if (brandFilter!=='' && priceFilter==='') {
-//   filterByName(totalResult, brandFilter)
-// } else if(priceFilter!==''&& brandFilter===''){
-//   filterByPrice(totalCar, priceFilter)
-// } else if (priceFilter!==''&& brandFilter!==''){
-//   filterByNameAndPrice(totalResult, brandFilter, priceFilter)
-// }
 
    const filteredCars = totalResult.filter(
           (car) => car.make === brandFilter || numberFromText(car.rentalPrice) <= Number(priceNumber));
@@ -140,8 +128,10 @@ dispatch({type:'catalog/setPriceFilter', payload:''} )
    return (
     <section className={css.container}>
        {isLoading && <Loader />}
-       {filteredCars.length === 0 && (brandFilter!==''|| priceFilter!=="") &&
-      <p className={css.filter_massage}>There is no car that meets your requirements </p>}
+       {(filteredCars.length === 0 && priceNumber!=='' && brandFilter!=='' ) &&
+      <p className={css.filter_massage}>
+        There is no car that meets your requirements 
+      </p>}
      <ul className={css.list}>
       {showPoster&&renderArray.map(car => 
       <CarItem 
@@ -152,7 +142,7 @@ dispatch({type:'catalog/setPriceFilter', payload:''} )
       handleAddToFavorites={()=>handleAddToFavorites(car)}
       openModal={() => openModal(car)}/>)}
      </ul>  
-    {showButton&&
+    {(showButton&& filteredCars.length === 0)&&
     <button 
       className={css.button_more} 
       type='button' 

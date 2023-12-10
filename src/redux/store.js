@@ -1,11 +1,9 @@
-import { combineReducers, createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import { catalogReducer } from "./catalogReducer";
-import { devToolsEnhancer } from "@redux-devtools/extension";
  
 
- const rootReducer = combineReducers ({  
-        results:catalogReducer,
-  });
+ export const store = configureStore({
+     reducer:{ results:catalogReducer},
+    });
 
-  const enhancer = devToolsEnhancer();
- export const store = createStore(rootReducer, enhancer);
+

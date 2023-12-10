@@ -8,6 +8,7 @@ import css from './CarListFavorite.module.css';
 import { useSelector } from 'react-redux';
 import DatailCar from 'components/DatailCar/DatailCar';
 import CarItem from '../CarItem/CarItem';
+import { selectIsLoading } from 'redux/catalogReducer';
 
 const CarListFavorites = () => {
   const [showModal, setShowModal] = useState(false);
@@ -16,7 +17,7 @@ const CarListFavorites = () => {
   const [isAddFavorite, setIsAddFavorite] = useState(false);
   const [storedFavorites, setStoredFavorites] = useState([]);
 
-  const isLoading = useSelector((state) => state.results.isLoading);
+  const isLoading = useSelector(selectIsLoading);
 
 
 useEffect(() => {

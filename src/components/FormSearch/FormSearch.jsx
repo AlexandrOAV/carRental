@@ -4,15 +4,19 @@ import React, { useState } from 'react';
 import css from './FormSearch.module.css'
 import { formatNumber } from 'constans/constans';
 import { useDispatch } from 'react-redux';
+import { setBrandFilter, setPriceFilter } from 'redux/catalogReducer';
 
 const FormSearch = () => {
   const [carBrand, setCarBrand] = useState('');
   const [price, setPrice] = useState('');
   const [fromMileage, setFromMileage] = useState('');
   const [toMileage, setToMileage] = useState('');
+
   const dispatch = useDispatch();
 
-
+  const handleReload = () => {
+    window.location.reload();
+  };
  
 
 
@@ -22,10 +26,13 @@ const FormSearch = () => {
     event.preventDefault();  
     setCarBrand(carBrand);
     setPrice(price);   
-  dispatch({ type: 'catalog/setBrandFilter', payload: carBrand });
-  dispatch({ type: 'catalog/setPriceFilter', payload: price });
-  setCarBrand('');
-  setPrice('');  
+    const form = event.target;
+  dispatch(setBrandFilter(carBrand));
+  dispatch(setPriceFilter(price));
+  // setCarBrand('');
+  // setPrice('');  
+  form.reset();
+
     };
 
   return (
@@ -83,6 +90,12 @@ const FormSearch = () => {
     
     </div>  
       <button type="submit">Search</button>
+      <button 
+      className={css.button_more} 
+      type='button' 
+      onClick={handleReload}>
+        Reload
+    </button>
     </form>
     </section>
 
